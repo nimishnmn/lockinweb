@@ -1,83 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lockin | Focus tracking that feels alive</title>
-  <meta
-    name="description"
-    content="lockin is a modern focus and productivity app for deep work, activity tracking, tasks, analytics, and lock-in sessions."
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="./styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lockin — Focus OS for Creators</title>
+  <meta name="description" content="A state-of-the-art focus tracking and productivity system. Built for deliberate work.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./claude_styles.css">
+  <script src="./claude_app.js" defer></script>
 </head>
 <body>
-  <div class="page-glow page-glow-left"></div>
-  <div class="page-glow page-glow-right"></div>
+  <div class="bg-glow"></div>
 
-  <header class="site-header">
-    <div class="site-header-inner">
-      <a class="brand" href="#top" aria-label="lockin home">
-        <span class="brand-mark"></span>
-        <span class="brand-text">lockin</span>
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <div class="brand-mark"></div>
+        <span>LOCKIN'</span>
       </a>
-
-      <nav class="header-actions" aria-label="Primary">
-        <a class="text-link" href="#features">Features</a>
-        <a class="text-link" href="#about">About</a>
-        <a class="text-link" href="https://github.com/nimishnmn/Lockin" target="_blank" rel="noreferrer">GitHub</a>
-        <a
-          class="button button-small button-ghost"
-          href="https://github.com/nimishnmn/Lockin/releases/download/1.0/lockin-2.7.3-arm64.dmg"
-        >
-          Download
-        </a>
-      </nav>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#about">Philosophy</a>
+        <a href="#download" class="btn btn-primary btn-small">Download</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <main class="site-main" id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow">Offline-first focus OS for creators</div>
-        <h1>Track your time. Protect your focus. <span>Lock in.</span></h1>
-        <p class="hero-text">
-          lockin turns your desktop into a focus dashboard with live app tracking, lock-in sessions,
-          playlists, task planning, calendars, and clean analytics that show where your day really goes.
-        </p>
-
-        <div class="hero-actions">
-          <a
-            class="button button-primary"
-            href="https://github.com/nimishnmn/Lockin/releases/download/1.0/lockin-2.7.3-arm64.dmg"
-          >
-            Download for Mac
-          </a>
-          <a class="button button-secondary" href="#about">Read about lockin</a>
-        </div>
-
-        <div class="hero-meta">
-          <div class="meta-chip">
-            <span class="meta-dot meta-green"></span>
-            Focus timer and app tracking
-          </div>
-          <div class="meta-chip">
-            <span class="meta-dot meta-blue"></span>
-            Local-first saves and backups
-          </div>
-          <div class="meta-chip">
-            <span class="meta-dot meta-orange"></span>
-            Built for study, editing, coding, and deep work
-          </div>
-        </div>
+  <main>
+    <section class="hero container">
+      <h1><span>Track your time</span><span>Protect your focus</span></h1>
+      
+      <div class="hero-actions">
+        <a href="#download" class="btn btn-primary">LOCKIN'</a>
+        <a href="#features" class="btn btn-secondary">Explore Features</a>
       </div>
 
-      <div class="hero-preview" aria-hidden="true">
+      <div class="app-mockup">
         <div class="preview-shell">
           <div class="preview-windowbar">
             <span class="traffic-dot traffic-red"></span>
@@ -92,9 +52,6 @@
                 <strong>Studying</strong>
                 <span>Tracking</span>
               </div>
-              <svg class="ui-icon ui-icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m6 9 6 6 6-6"></path>
-              </svg>
             </div>
 
             <div class="preview-nav">
@@ -157,6 +114,10 @@
                 <span>About</span>
               </div>
             </div>
+
+            <div class="preview-sidebar-bottom">
+              <button class="plus-button">+</button>
+            </div>
           </aside>
 
           <div class="preview-main">
@@ -177,131 +138,322 @@
               </div>
             </div>
 
-            <div class="preview-stats">
-              <article class="preview-stat-card">
-                <div class="preview-stat-icon icon-green">
-                  <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="13" r="6.5"></circle>
-                    <path d="M12 9v4l2.6 1.8"></path>
-                    <path d="M9.2 2.8h5.6"></path>
-                  </svg>
-                </div>
-                <div class="card-label">Today</div>
-                <div class="card-time">7h 24m</div>
-              </article>
+            <!-- Pulse Page -->
+            <div class="preview-page is-active" id="page-pulse">
+              <div class="preview-stats">
+                <article class="preview-stat-card">
+                  <div class="preview-stat-icon icon-green">
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="13" r="6.5"></circle>
+                      <path d="M12 9v4l2.6 1.8"></path>
+                      <path d="M9.2 2.8h5.6"></path>
+                    </svg>
+                  </div>
+                  <div class="card-label">Today</div>
+                  <div class="card-time">7h 24m</div>
+                </article>
 
-              <article class="preview-stat-card">
-                <div class="preview-stat-icon icon-blue">
-                  <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M3 12h4l2.2-6 4.2 12 2.6-7H21"></path>
-                  </svg>
-                </div>
-                <div class="card-label">Apps</div>
-                <div class="card-time">8</div>
-              </article>
-
-              <article class="preview-stat-card">
-                <div class="preview-stat-icon icon-orange">
-                  <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M9 6.5h10"></path>
-                    <path d="M9 12h10"></path>
-                    <path d="M9 17.5h10"></path>
-                    <path d="M4 6.5h.01"></path>
-                    <path d="M4 12h.01"></path>
-                    <path d="M4 17.5h.01"></path>
-                  </svg>
-                </div>
-                <div class="card-label">Open tasks</div>
-                <div class="card-time">7</div>
-              </article>
-
-              <article class="preview-stat-card">
-                <div class="preview-stat-icon icon-violet">
-                  <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 3l7.5 4.2v5.6c0 4.4-3 8.5-7.5 9.2-4.5-.7-7.5-4.8-7.5-9.2V7.2L12 3Z"></path>
-                    <path d="M9.4 12.2l1.7 1.8 3.5-4"></path>
-                  </svg>
-                </div>
-                <div class="card-label">Productive</div>
-                <div class="card-time">3h 13m</div>
-              </article>
-            </div>
-
-            <div class="preview-content">
-              <article class="preview-focus-card">
-                <div class="panel-header">
-                  <div class="panel-heading">
-                    <svg class="ui-icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <article class="preview-stat-card">
+                  <div class="preview-stat-icon icon-blue">
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <path d="M3 12h4l2.2-6 4.2 12 2.6-7H21"></path>
                     </svg>
-                    <strong>Focus shape</strong>
                   </div>
-                  <span class="mini-button">+ New task</span>
-                </div>
+                  <div class="card-label">Apps</div>
+                  <div class="card-time">8</div>
+                </article>
 
-                <div class="preview-chips">
-                  <span class="preview-chip chip-green"><i></i>Productive 3h 13m</span>
-                  <span class="preview-chip chip-red"><i></i>Unproductive 2h 21m</span>
-                  <span class="preview-chip chip-gray"><i></i>Neutral 1h 48m</span>
-                </div>
-
-                <div class="preview-controls">
-                  <span class="preview-control is-active">Default</span>
-                  <span class="preview-control">App view</span>
-                  <span class="preview-control preview-control-wide">Today</span>
-                </div>
-
-                <div class="preview-graph">
-                  <svg viewBox="0 0 720 320" preserveAspectRatio="none" aria-hidden="true">
-                    <g class="graph-grid">
-                      <line x1="0" y1="36" x2="720" y2="36"></line>
-                      <line x1="0" y1="112" x2="720" y2="112"></line>
-                      <line x1="0" y1="188" x2="720" y2="188"></line>
-                      <line x1="0" y1="264" x2="720" y2="264"></line>
-                    </g>
-                    <path class="graph-area graph-area-green" d="M0 270 C30 264 48 258 72 264 C100 272 120 174 150 234 C186 308 206 168 244 96 C278 34 308 218 348 122 C384 34 420 268 458 280 C494 290 514 196 544 218 C568 234 584 216 610 272 L610 320 L0 320 Z"></path>
-                    <path class="graph-area graph-area-red" d="M0 280 C40 246 74 312 110 280 C146 244 182 306 226 284 C264 266 304 152 346 260 C384 306 424 180 470 130 C512 96 540 252 586 282 L586 320 L0 320 Z"></path>
-                    <path class="graph-line graph-line-gray" d="M0 182 C38 246 74 188 110 236 C144 274 176 198 214 242 C252 288 290 276 332 280 C374 282 408 270 446 282 C484 292 518 264 556 286"></path>
-                    <path class="graph-line graph-line-green" d="M0 270 C30 264 48 258 72 264 C100 272 120 174 150 234 C186 308 206 168 244 96 C278 34 308 218 348 122 C384 34 420 268 458 280 C494 290 514 196 544 218 C568 234 584 216 610 272"></path>
-                    <path class="graph-line graph-line-red" d="M0 280 C40 246 74 312 110 280 C146 244 182 306 226 284 C264 266 304 152 346 260 C384 306 424 180 470 130 C512 96 540 252 586 282"></path>
-                  </svg>
-                </div>
-              </article>
-
-              <article class="preview-apps-card">
-                <div class="panel-header">
-                  <div class="panel-heading">
-                    <svg class="ui-icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M12 3v18"></path>
-                      <path d="M3 12h18"></path>
-                      <path d="M5.6 5.6l12.8 12.8"></path>
-                      <path d="M18.4 5.6 5.6 18.4"></path>
+                <article class="preview-stat-card">
+                  <div class="preview-stat-icon icon-orange">
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M9 6.5h10"></path>
+                      <path d="M9 12h10"></path>
+                      <path d="M9 17.5h10"></path>
+                      <path d="M4 6.5h.01"></path>
+                      <path d="M4 12h.01"></path>
+                      <path d="M4 17.5h.01"></path>
                     </svg>
-                    <strong>Apps used</strong>
+                  </div>
+                  <div class="card-label">Open tasks</div>
+                  <div class="card-time">7</div>
+                </article>
+
+                <article class="preview-stat-card">
+                  <div class="preview-stat-icon icon-violet">
+                    <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 3l7.5 4.2v5.6c0 4.4-3 8.5-7.5 9.2-4.5-.7-7.5-4.8-7.5-9.2V7.2L12 3Z"></path>
+                      <path d="M9.4 12.2l1.7 1.8 3.5-4"></path>
+                    </svg>
+                  </div>
+                  <div class="card-label">Productive</div>
+                  <div class="card-time">3h 13m</div>
+                </article>
+              </div>
+
+              <div class="preview-content">
+                <article class="preview-focus-card">
+                  <div class="panel-header">
+                    <div class="panel-heading">
+                      <svg class="ui-icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 12h4l2.2-6 4.2 12 2.6-7H21"></path>
+                      </svg>
+                      <strong>Focus shape</strong>
+                    </div>
+                    <span class="mini-button">+ New task</span>
+                  </div>
+
+                  <div class="preview-chips">
+                    <span class="preview-chip chip-green"><i></i>Productive 3h 13m</span>
+                    <span class="preview-chip chip-red"><i></i>Unproductive 2h 21m</span>
+                    <span class="preview-chip chip-gray"><i></i>Neutral 1h 48m</span>
+                  </div>
+
+                  <div class="preview-controls">
+                    <span class="preview-control is-active">Default</span>
+                    <span class="preview-control">App view</span>
+                    <span class="preview-control preview-control-wide">Today</span>
+                  </div>
+
+                  <div class="preview-graph">
+                    <svg viewBox="0 0 720 320" preserveAspectRatio="none" aria-hidden="true">
+                      <g class="graph-grid">
+                        <line x1="0" y1="36" x2="720" y2="36"></line>
+                        <line x1="0" y1="112" x2="720" y2="112"></line>
+                        <line x1="0" y1="188" x2="720" y2="188"></line>
+                        <line x1="0" y1="264" x2="720" y2="264"></line>
+                      </g>
+                      <path class="graph-area graph-area-green" d="M0 270 C30 264 48 258 72 264 C100 272 120 174 150 234 C186 308 206 168 244 96 C278 34 308 218 348 122 C384 34 420 268 458 280 C494 290 514 196 544 218 C568 234 584 216 610 272 L610 320 L0 320 Z"></path>
+                      <path class="graph-area graph-area-red" d="M0 280 C40 246 74 312 110 280 C146 244 182 306 226 284 C264 266 304 152 346 260 C384 306 424 180 470 130 C512 96 540 252 586 282 L586 320 L0 320 Z"></path>
+                      <path class="graph-line graph-line-gray" d="M0 182 C38 246 74 188 110 236 C144 274 176 198 214 242 C252 288 290 276 332 280 C374 282 408 270 446 282 C484 292 518 264 556 286"></path>
+                      <path class="graph-line graph-line-green" d="M0 270 C30 264 48 258 72 264 C100 272 120 174 150 234 C186 308 206 168 244 96 C278 34 308 218 348 122 C384 34 420 268 458 280 C494 290 514 196 544 218 C568 234 584 216 610 272"></path>
+                      <path class="graph-line graph-line-red" d="M0 280 C40 246 74 312 110 280 C146 244 182 306 226 284 C264 266 304 152 346 260 C384 306 424 180 470 130 C512 96 540 252 586 282"></path>
+                    </svg>
+                  </div>
+                </article>
+
+                <article class="preview-apps-card">
+                  <div class="panel-header">
+                    <div class="panel-heading">
+                      <svg class="ui-icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3v18"></path>
+                        <path d="M3 12h18"></path>
+                        <path d="M5.6 5.6l12.8 12.8"></path>
+                        <path d="M18.4 5.6 5.6 18.4"></path>
+                      </svg>
+                      <strong>Apps used</strong>
+                    </div>
+                  </div>
+                  <div class="preview-donut"></div>
+                  <div class="preview-app-list">
+                    <div class="preview-app-item app-green"><span class="app-item-name"><i></i>Electron</span><span>2m</span></div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="preview-bottom-row">
+                <article class="live-records-card">
+                  <div class="panel-header" style="margin-bottom: 16px;">
+                    <div class="panel-heading">
+                      <svg class="ui-icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 12h18M3 6h18M3 18h18"></path>
+                      </svg>
+                      <strong>Live records</strong>
+                    </div>
+                  </div>
+                  <div class="record-item">
+                    <div class="record-info"><strong>Electron</strong><span class="record-time-meta">4:51 PM</span></div>
+                    <strong>1m</strong>
+                  </div>
+                  <div class="record-item">
+                    <div class="record-info"><strong>Electron</strong><span class="record-time-meta">4:48 PM</span></div>
+                    <strong>15s</strong>
+                  </div>
+                </article>
+
+                <article class="task-pressure-card">
+                  <div class="panel-header">
+                    <div class="panel-heading">
+                      <svg class="ui-icon panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 6 9 17l-5-5"></path>
+                      </svg>
+                      <strong>Task pressure</strong>
+                    </div>
+                  </div>
+                  <div style="height: 120px; display: flex; align-items: flex-end; gap: 8px; margin-top: 20px; padding: 0 10px;">
+                    <div style="flex: 1; background: var(--accent); height: 80%; border-radius: 4px;"></div>
+                    <div style="flex: 1; background: rgba(255,255,255,0.05); height: 20%; border-radius: 4px;"></div>
+                    <div style="flex: 1; background: rgba(255,255,255,0.05); height: 40%; border-radius: 4px;"></div>
+                    <div style="flex: 1; background: rgba(255,255,255,0.05); height: 10%; border-radius: 4px;"></div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Tools Page -->
+            <div class="preview-page" id="page-tools">
+              <div class="timer-container">
+                <div class="eyebrow" style="margin-bottom: 20px;">Timer</div>
+                <div class="timer-display">
+                  <div class="timer-column">
+                    <span>00</span>
+                  </div>
+                  <span>:</span>
+                  <div class="timer-column">
+                    <span>00</span>
+                  </div>
+                  <span>:</span>
+                  <div class="timer-column">
+                    <span>03</span>
                   </div>
                 </div>
+                <div class="timer-actions">
+                  <button class="button button-primary button-small">▶ Start</button>
+                  <button class="button button-secondary button-small">↺ Reset</button>
+                </div>
+                <div class="timer-presets">
+                  <button class="preset-btn">25 min</button>
+                  <button class="preset-btn">30 min</button>
+                  <button class="preset-btn">45 min</button>
+                  <button class="preset-btn">50 min</button>
+                  <button class="preset-btn">+</button>
+                </div>
+              </div>
+              <div class="preview-content">
+                <article class="preview-focus-card">
+                  <div class="panel-header">
+                    <div class="panel-heading"><strong>Playlists</strong></div>
+                    <span class="mini-button">+ New playlist</span>
+                  </div>
+                  <div style="padding: 40px; text-align: center; color: var(--muted);">
+                    <div class="card-label">OFFLINE PLAYLIST</div>
+                    <strong style="display: block; margin: 10px 0; color: var(--text);">No song selected</strong>
+                    <div style="display: flex; gap: 8px; justify-content: center; margin-top: 20px;">
+                      <span class="mini-button">Off</span>
+                      <span class="mini-button">Playlist</span>
+                      <span class="mini-button">Repeat</span>
+                    </div>
+                  </div>
+                </article>
+                <article class="preview-apps-card">
+                  <div class="panel-header">
+                    <div class="panel-heading"><strong>Offline playlist</strong></div>
+                    <span class="mini-button">+ Add music</span>
+                  </div>
+                  <div class="empty-state" style="height: 180px; border: none;">
+                    <svg class="ui-icon" style="width: 48px; height: 48px; opacity: 0.2;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V6l10-2v12"></path><circle cx="6.5" cy="18" r="2.5"></circle><circle cx="16.5" cy="16" r="2.5"></circle></svg>
+                    <p style="font-size: 0.8rem;">This playlist is ready for songs</p>
+                  </div>
+                </article>
+              </div>
+            </div>
 
-                <div class="preview-donut"></div>
+            <!-- Tasks Page -->
+            <div class="preview-page" id="page-tasks">
+              <div class="tasks-header">
+                <h2>Studying queue</h2>
+                <button class="button button-primary button-small">+ New task</button>
+              </div>
+              <div class="tasks-tabs">
+                <span class="task-tab is-active">Today 0</span>
+                <span class="task-tab">Next week 0</span>
+                <span class="task-tab">Next month 0</span>
+                <span class="task-tab">Later 0</span>
+                <span class="task-tab">Done 0</span>
+              </div>
+              <div class="empty-state" style="margin-top: 24px;">
+                <svg class="ui-icon" style="width: 48px; height: 48px; opacity: 0.2;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6.5h10M9 12h10M9 17.5h10M4 6.5h.01M4 12h.01M4 17.5h.01"></path></svg>
+                <p>Clear lane</p>
+              </div>
+            </div>
 
-                <div class="preview-app-list">
-                  <div class="preview-app-item app-red">
-                    <span class="app-item-name"><i></i>Discord</span>
-                    <span>2h 9m</span>
+            <!-- Calendar Page -->
+            <div class="preview-page" id="page-calendar">
+              <div class="calendar-layout">
+                <div class="calendar-main">
+                  <div class="calendar-header">
+                    <h2 style="margin: 0;">April 2026</h2>
+                    <button class="mini-button">Today</button>
                   </div>
-                  <div class="preview-app-item app-green">
-                    <span class="app-item-name"><i></i>Brave Browser</span>
-                    <span>1h 38m</span>
-                  </div>
-                  <div class="preview-app-item app-green">
-                    <span class="app-item-name"><i></i>Codex</span>
-                    <span>1h 32m</span>
-                  </div>
-                  <div class="preview-app-item app-gray">
-                    <span class="app-item-name"><i></i>lockin</span>
-                    <span>1h 3m</span>
+                  <div class="calendar-grid">
+                    <div class="calendar-day-label">MON</div><div class="calendar-day-label">TUE</div><div class="calendar-day-label">WED</div><div class="calendar-day-label">THU</div><div class="calendar-day-label">FRI</div><div class="calendar-day-label">SAT</div><div class="calendar-day-label">SUN</div>
+                    <div class="calendar-cell"><span class="cell-date">30</span></div>
+                    <div class="calendar-cell"><span class="cell-date">31</span></div>
+                    <div class="calendar-cell"><span class="cell-date">1</span></div>
+                    <div class="calendar-cell"><span class="cell-date">2</span></div>
+                    <div class="calendar-cell"><span class="cell-date">3</span></div>
+                    <div class="calendar-cell"><span class="cell-date">4</span></div>
+                    <div class="calendar-cell"><span class="cell-date">5</span></div>
+                    <!-- Week 2 -->
+                    <div class="calendar-cell"><span class="cell-date">6</span></div>
+                    <div class="calendar-cell"><span class="cell-date">7</span></div>
+                    <div class="calendar-cell"><span class="cell-date">8</span></div>
+                    <div class="calendar-cell"><span class="cell-date">9</span></div>
+                    <div class="calendar-cell"><span class="cell-date">10</span></div>
+                    <div class="calendar-cell"><span class="cell-date">11</span></div>
+                    <div class="calendar-cell"><span class="cell-date">12</span></div>
+                    <!-- Week 3 -->
+                    <div class="calendar-cell"><span class="cell-date">13</span></div>
+                    <div class="calendar-cell"><span class="cell-date">14</span></div>
+                    <div class="calendar-cell"><span class="cell-date">15</span></div>
+                    <div class="calendar-cell"><span class="cell-date">16</span></div>
+                    <div class="calendar-cell"><span class="cell-date">17</span></div>
+                    <div class="calendar-cell"><span class="cell-date">18</span></div>
+                    <div class="calendar-cell"><span class="cell-date">19</span></div>
+                    <!-- Week 4 -->
+                    <div class="calendar-cell"><span class="cell-date">20</span></div>
+                    <div class="calendar-cell"><span class="cell-date">21</span></div>
+                    <div class="calendar-cell has-data">
+                      <span class="cell-date">22</span>
+                      <div class="cell-stats"><div class="stat-time">12h 38m</div><div class="stat-productive">3h 22m</div></div>
+                    </div>
+                    <div class="calendar-cell has-data">
+                      <span class="cell-date">23</span>
+                      <div class="cell-stats"><div class="stat-time">11h 30m</div><div class="stat-productive">1h 31m</div></div>
+                    </div>
+                    <div class="calendar-cell has-data">
+                      <span class="cell-date">24</span>
+                      <div class="cell-stats"><div class="stat-time">2h 25m</div><div class="stat-productive">4m</div></div>
+                    </div>
+                    <div class="calendar-cell"><span class="cell-date">25</span></div>
+                    <div class="calendar-cell is-active">
+                      <span class="cell-date">26</span>
+                      <div class="cell-stats"><div class="stat-time">2m</div><div class="stat-productive">0m</div></div>
+                    </div>
                   </div>
                 </div>
-              </article>
+                <aside class="calendar-sidebar">
+                  <div class="card-label">SELECTED</div>
+                  <h3 style="margin: 8px 0 20px;">Apr 26</h3>
+                  <div class="preview-stat-card" style="min-height: auto; margin-bottom: 12px;">
+                    <div class="card-label">Total active</div>
+                    <div class="card-time" style="font-size: 1.2rem;">2m</div>
+                  </div>
+                  <div class="preview-stat-card" style="min-height: auto; margin-bottom: 20px;">
+                    <div class="card-label">Productive</div>
+                    <div class="card-time" style="font-size: 1.2rem; color: var(--accent);">0s</div>
+                  </div>
+                  <button class="button button-primary" style="width: 100%; min-height: 48px;">+ Add task</button>
+                  <div class="empty-state" style="height: 200px; margin-top: 20px; border-style: solid;">
+                    <svg class="ui-icon" style="opacity: 0.2;" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <p style="font-size: 0.8rem;">Open day</p>
+                  </div>
+                </aside>
+              </div>
+            </div>
+
+            <!-- Locks Page -->
+            <div class="preview-page" id="page-locks">
+              <div class="eyebrow" style="margin-bottom: 8px;">LOCK MENU</div>
+              <h2>Custom App Constraints</h2>
+              <div class="locks-inputs">
+                <input type="text" class="lock-input" placeholder="Application Name">
+                <input type="text" class="lock-input" placeholder="To be blocked">
+                <button class="button button-primary" style="min-height: 52px; padding: 0 24px;">+ Add</button>
+              </div>
+              <div class="empty-state">
+                <svg class="ui-icon" style="width: 64px; height: 64px; opacity: 0.1;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <p style="font-size: 1.1rem; font-weight: 600;">No custom locks active.</p>
+              </div>
             </div>
 
             <div class="preview-player">
@@ -327,143 +479,88 @@
       </div>
     </section>
 
-    <section class="feature-section" id="features">
-      <div class="section-heading">
-        <div class="eyebrow">What lockin does</div>
-        <h2>Everything you need to see your time clearly.</h2>
-        <p>
-          lockin mixes activity tracking, deep work tools, playlists, goals, and visual analytics
-          into one calm desktop experience that actually makes you want to stay focused.
-        </p>
-      </div>
+    <section id="features" class="features">
+      <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto 64px;">
+          <h2 style="font-size: 3rem; margin-bottom: 24px;">Built for the modern creator.</h2>
+          <p style="color: var(--text-muted); font-size: 1.1rem;">Everything you need to turn chaos into clarity, built with an uncompromising focus on privacy and efficiency.</p>
+        </div>
 
-      <div class="feature-grid">
-        <article class="feature-card">
-          <div class="feature-heading">
+        <div class="feature-grid">
+          <article class="feature-card">
             <div class="feature-icon">
-              <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 12h4l2.2-6 4.2 12 2.6-7H21"></path>
-              </svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg>
             </div>
-            <h3>Live app tracking</h3>
-          </div>
-          <p>See what apps you use, how long you use them, and how your focus shifts across the day.</p>
-        </article>
+            <h3>Live App Tracking</h3>
+            <p>Real-time analysis of your application usage. Understand exactly where your time goes with zero effort.</p>
+          </article>
 
-        <article class="feature-card">
-          <div class="feature-heading">
-            <div class="feature-icon feature-icon-blue">
-              <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 3l7.5 4.2v5.6c0 4.4-3 8.5-7.5 9.2-4.5-.7-7.5-4.8-7.5-9.2V7.2L12 3Z"></path>
-                <path d="M9.4 12.2l1.7 1.8 3.5-4"></path>
-              </svg>
+          <article class="feature-card">
+            <div class="feature-icon" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 4.2v5.6c0 4.4-3 8.5-7.5 9.2-4.5-.7-7.5-4.8-7.5-9.2V7.2L12 3Z"/><path d="M9.4 12.2l1.7 1.8 3.5-4"/></svg>
             </div>
-            <h3>Lock-in mode</h3>
-          </div>
-          <p>Run timed sessions, push distractions away, and keep your focus mode visible and intentional.</p>
-        </article>
+            <h3>Lock-in Mode</h3>
+            <p>Engage deep work mode. Our system enforces focus by managing notifications and distracting apps.</p>
+          </article>
 
-        <article class="feature-card">
-          <div class="feature-heading">
-            <div class="feature-icon feature-icon-orange">
-              <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 6.5h10"></path>
-                <path d="M9 12h10"></path>
-                <path d="M9 17.5h10"></path>
-                <path d="M4 6.5h.01"></path>
-                <path d="M4 12h.01"></path>
-                <path d="M4 17.5h.01"></path>
-              </svg>
+          <article class="feature-card">
+            <div class="feature-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
-            <h3>Tasks and calendar</h3>
-          </div>
-          <p>Organize daily work, next-week plans, and goal-specific tasks without leaving the app.</p>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-heading">
-            <div class="feature-icon feature-icon-pink">
-              <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 18V6l10-2v12"></path>
-                <circle cx="6.5" cy="18" r="2.5"></circle>
-                <circle cx="16.5" cy="16" r="2.5"></circle>
-              </svg>
-            </div>
-            <h3>Playlists and sound</h3>
-          </div>
-          <p>Use offline music, timers, playlists, and session audio to create your own focus environment.</p>
-        </article>
+            <h3>Integrated Tasks</h3>
+            <p>Planning meets performance. Manage your queue and calendar without switching contexts.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="about-section" id="about">
-      <div class="about-card">
-        <div class="section-heading compact">
-          <div class="eyebrow">About the app</div>
-          <h2>A focus dashboard built for ambitious people.</h2>
-        </div>
+    <section id="download" class="downloads container">
+      <span class="eyebrow">Get Started</span>
+      <h2 style="font-size: 3.5rem; margin-bottom: 24px;">Experience the difference.</h2>
+      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Download lockin for your operating system and reclaim your focus today.</p>
 
-        <div class="about-columns">
+      <div class="download-grid">
+        <div class="download-card">
+          <svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
           <div>
-            <p>
-              lockin is designed for students, creators, editors, developers, and anyone who wants
-              a cleaner relationship with time. It keeps your data offline-first, turns your activity
-              into readable visual patterns, and gives you the structure to go from distracted to deliberate.
-            </p>
-            <p>
-              The experience is inspired by modern desktop tools: dark glass panels, strong contrast,
-              calm gradients, and a UI that feels sharp instead of noisy. The goal is simple — help you
-              understand your habits, protect your momentum, and keep working on what matters.
-            </p>
+            <h3 style="margin-bottom: 8px;">Windows 11</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Standard Installer</p>
           </div>
-
-          <div class="about-stack">
-            <div class="stack-panel">
-              <span>Goals</span>
-              <strong>Study, editing, blender, coding, custom modes</strong>
-            </div>
-            <div class="stack-panel">
-              <span>Analytics</span>
-              <strong>Pulse charts, app timelines, productivity labels</strong>
-            </div>
-            <div class="stack-panel">
-              <span>Control</span>
-              <strong>Timers, alerts, playlists, local backups, theme settings</strong>
-            </div>
-          </div>
+          <a href="https://github.com/nimishnmn/Lockin/releases/download/windows/lockin.installer.3.1.8.exe" class="btn">Download .exe</a>
         </div>
-      </div>
-    </section>
 
-    <section class="download-band">
-      <div class="download-panel">
-        <div class="eyebrow">Ready to try it?</div>
-        <h2>Download lockin and start tracking your focus properly.</h2>
-        <p>
-          The current download button points to the macOS build. Clean install, dark-mode-ready,
-          and designed for everyday deep work.
-        </p>
-        <a
-          class="button button-primary button-large"
-          href="https://github.com/nimishnmn/Lockin/releases/download/1.0/lockin-2.7.3-arm64.dmg"
-        >
-          Download for Mac
-        </a>
+        <div class="download-card">
+          <svg class="os-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          <div>
+            <h3 style="margin-bottom: 8px;">Apple (silicon)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">M1/M2/M3 Native</p>
+          </div>
+          <a href="https://github.com/nimishnmn/Lockin/releases/download/mac/lockin-3.1.2-arm64.dmg" class="btn">Download .dmg</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-brand">
-      <span class="brand-mark"></span>
-      <span>lockin</span>
+  <footer class="container">
+    <div class="footer-inner">
+      <div class="logo">
+        <div class="brand-mark" style="width: 24px; height: 24px;"></div>
+        <span>LOCKIN'</span>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 lockin. Locally built for global performance.
+      </div>
+      <div class="nav-links">
+        <a href="https://github.com/nimishnmn/Lockin">GitHub</a>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="https://github.com/nimishnmn/Lockin" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://nimishnmn.github.io/lockinweb/" target="_blank" rel="noreferrer">Website</a>
-      <a href="https://github.com/nimishnmn/Lockin/releases/download/1.0/lockin-2.7.3-arm64.dmg">Download</a>
-    </div>
-    <div class="footer-copy">Copyright 2026 lockin. All rights reserved.</div>
   </footer>
 </body>
 </html>
